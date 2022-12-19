@@ -1,0 +1,13 @@
+version: "3"
+
+services:
+  db:
+     image: mysql:5.7
+     environment:
+       MYSQL_ROOT_PASSWORD: admin
+       MYSQL_DATABASE: dostavim
+       MYSQL_ROOT_HOST: '%'
+     ports:
+       - 3306:3306
+     volumes: 
+       - ./scripts:/docker-entrypoint-initdb.d/

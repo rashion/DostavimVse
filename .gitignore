@@ -24,3 +24,7 @@ nbdist/
 .nb-gradle/
 
 src/main/java/ru/fivt/dostavimvse/Diagram.uml
+
+**/.DS_Store
+**/._*
+**/vifminfo.json

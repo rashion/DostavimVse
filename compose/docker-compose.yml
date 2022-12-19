@@ -1,0 +1,46 @@
+version: "3"
+
+services:
+  db:
+    image: mysql:5.7
+    hostname: db.app
+    domainname: db.app
+    platform: linux/amd64
+    restart: unless-stopped
+    # network_mode: "host"
+    environment:
+      MYSQL_ROOT_PASSWORD: admin
+      MYSQL_USER: dostavimvse
+      MYSQL_PASSWORD: fhdjenljf
+      MYSQL_DATABASE: dostavim
+      # MYSQL_ROOT_HOST: '%'
+    ports:
+      - 3306:3306
+    volumes:
+      - ./scripts:/docker-entrypoint-initdb.d/
+    networks:
+      app_net:
+        # ipv4_address: 172.236.2.1
+
+  webapp:
+    ports:
+      - 8080:8080
+    image: gle8098/dostavimvse
+    restart: unless-stopped
+    # image: dostavim
+    networks:
+      app_net:
+        # ipv4_address: 172.236.2.2
+    depends_on:
+      - db
+    # extra_hosts:
+      # - "db.app:172.236.2.1"
+    links:
+      - db
+
+networks:
+  app_net:
+    # ipam:
+    #   driver: default
+    #   config:
+    #     - subnet: "172.236.2.0/24"

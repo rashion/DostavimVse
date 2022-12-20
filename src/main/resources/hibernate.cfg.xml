@@ -5,7 +5,7 @@
 <hibernate-configuration>
     <session-factory>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
-        <property name="connection.url">jdbc:mysql://db.app:3306/dostavim?useSSL=false</property>
+        <property name="connection.url">jdbc:mysql://db-service:3306/dostavim?useSSL=false</property>
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
 
         <property name="connection.username">dostavimvse</property>
